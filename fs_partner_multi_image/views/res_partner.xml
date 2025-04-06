@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 KMEE
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="res_partner_form_view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="image_1920" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="image_1920" position="after">
+                 <field
+                    name="image"
+                    class="oe_avatar"
+                    options="{'preview_image': 'image_medium', 'zoom': true}"
+                />
+            </field>
+            <notebook position="inside">
+                <page name="images" string="Images">
+                    <field name="image_ids">
+                        <tree>
+                            <field name="sequence" widget="handle" />
+                            <field name="name" />
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <!-- <record model="ir.ui.view" id="res_partner_kanban_view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_image')]/img" position="attributes">
+               <attribute name="t-att-src">kanban_image('res.partner', 'image_medium', record.id.raw_value)</attribute>
+            </xpath>
+        </field>
+    </record> -->
+</odoo>
